@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Контакты";
+}
+<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="pull-right">
+            <input type="button" id="exportButton" class="btn" value="Сделать экспорт контактов" data-url='@Url.Action("ExportContacts")' />
+        </div>
+</div>
+
+<div class="page-header text-center">
+    <h2>Контакты</h2>
+</div>
+
+<div class="text-center" style="display: none" id="divProcessing">
+    <h2>Идет загрузка данных</h2>
+</div>
+
+@Html.Action("PhoneContacts");
+
+@section scripts
+{
+    @Scripts.Render("/Scripts/liveSearching/searchContacts.js")
+}
+

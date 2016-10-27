@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PhoneBook.DataLayer.Entity.PhoneContact>
+<div class="container" id="PhoneContactsTable">
+    <table class="table">
+        <h3>
+            <strong> @Html.ActionLink("Создать контакт", "Create", "PhoneContact")</strong>
+        </h3>
+        <div class="pull-right">
+            <input type="text" class="form-control" placeholder="Поиск" id="searchBox" data-url='@Url.Action("PhoneContacts")'>
+        </div>
+        <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Номер телефона</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in @Model)
+            {
+                <tr>
+                    <td>
+                        <span class="lead">@contact.Name</span>
+                    </td>
+
+                    <td>
+                        <span class="lead">@contact.Surname</span>
+                    </td>
+
+                    <td>
+                        <span class="lead">@contact.PhoneNumber</span>
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Редактировать", "Edit", "PhoneContact", new { id = contact.Id },null) |
+                        @Html.ActionLink("Удалить", "Delete", "PhoneContact", new { id = contact.Id },null)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

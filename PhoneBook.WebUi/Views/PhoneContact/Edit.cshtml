@@ -1,0 +1,48 @@
+﻿@model PhoneBook.DataLayer.Entity.PhoneContact
+@{
+    ViewBag.Title = "Редактирование контакта";
+}
+
+<div class="page-header text-center">
+    <h2>Редактирование контакта</h2>
+</div>
+
+@using (Html.BeginForm("Edit", "PhoneContact", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name, null, new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Surname, new {@class = "control-label col-md-2"})
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Surname)
+            @Html.ValidationMessageFor(model => model.Surname, null, new {@class = "text-danger"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PhoneNumber)
+            @Html.ValidationMessageFor(model => model.PhoneNumber, null, new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary btn-lg">Сохранить</button>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Назад к списку контактов", "Index")
+</div>
+
